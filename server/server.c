@@ -6,19 +6,17 @@
 
 void hello(int n)
 {
-	write(1, "ok\n", 3);
-	exit (3);
+	static int count = 1;
+	printf("value of count: %i\n", count);
+	count++;
 }
 
 int main(void)
 {
 	printf("%i\n", getpid());
-//	signal(SIGUSR1, hello);
-	signal(SIGINT, hello);
-	while(1);
-//	exit(5);
-	
 	hello(1);
+	signal(SIGUSR1, hello);
+	while(1);
 
 	printf("chegou aqui\n");
 	
