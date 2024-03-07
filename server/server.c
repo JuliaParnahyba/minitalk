@@ -9,6 +9,7 @@ void hello(int n)
 	static int count = 1;
 	printf("value of count: %i\n", count);
 	count++;
+	usleep(600);
 }
 
 int main(void)
