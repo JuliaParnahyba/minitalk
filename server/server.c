@@ -7,16 +7,25 @@ void back_sig(int type_sig, siginfo_t *info, void *context)
 {
 	(void) context;
 
-	static int count = 0;
-	
-	if (type_sig == SIGUSR1)
-		printf("NO SIG1\n\n");
-	if (type_sig == SIGUSR2)
-		printf("NO SIG2\n\n");
+	static int	count;
+	static char	c;
+
+	count = 0;
+	if (type_sig == SIGUSR1) //zero
+		c |= (0 << count); 
+	else if (type_sig == SIGUSR2) //um
+		c |= (1 << count);
 	count++;
-	if (count == 10)
-		kill(info->si_pid, SIGUSR1);
+	if (count == 8)
+	{
+		printf("%c", c);
+		count = 0;
+		c = 0;
+	}
 }
+
+
+//	kill(info->si_pid, SIGUSR1);
 
 int main(void)
 {
@@ -25,12 +34,12 @@ int main(void)
 	sa.sa_flags = SA_SIGINFO;
 
 	printf("\n ----------- ***** ----------\n\n");
-	printf("QUE COMECEM OS JOGOS!\n");
 	printf("%i\n", getpid());
 	
 	sigaction(SIGUSR1, &sa, NULL);
 	sigaction(SIGUSR2, &sa, NULL);
 
-	while(1);
+	while(1)
+		pause();
 	return (0);
 }
