@@ -7,10 +7,9 @@ void back_sig(int type_sig, siginfo_t *info, void *context)
 {
 	(void) context;
 
-	static int	count;
-	static char	c;
+	static int	count = 0; 
+	static char	c = 0;
 
-	count = 0;
 	if (type_sig == SIGUSR1) //zero
 		c |= (0 << count); 
 	else if (type_sig == SIGUSR2) //um
@@ -18,14 +17,15 @@ void back_sig(int type_sig, siginfo_t *info, void *context)
 	count++;
 	if (count == 8)
 	{
-		printf("%c", c);
+		write(1, &c, 1);
+		if (c == '\0')
+			kill(info->si_pid, SIGUSR1);
 		count = 0;
 		c = 0;
 	}
 }
 
 
-//	kill(info->si_pid, SIGUSR1);
 
 int main(void)
 {

@@ -6,7 +6,7 @@
 void char_by_char(int c, int id)
 {
 	int	count;
-	int	bit;
+	int	bit = c;
 
 	count = 0;
 	while (count < 8)
@@ -33,6 +33,8 @@ int main(int c, char **v)
 		char	*str;
 		int		i;
 		int		server_id;
+		
+		signal(SIGUSR1, &sig_msg);
 
 		str = v[2];
 		i = 0;
@@ -43,7 +45,8 @@ int main(int c, char **v)
 			char_by_char(str[i], server_id);
 			i++;
 		}
-		signal(SIGUSR1, sig_msg);
+		if (str[i] == '\0')
+			char_by_char(str[i], server_id);
 	}
 	else 
 		printf("./client [PID] [string]\n");
