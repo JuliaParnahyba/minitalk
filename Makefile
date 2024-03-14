@@ -6,7 +6,7 @@
 #    By: jparnahy <jparnahy@student.42.rio>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/12 19:55:32 by jparnahy          #+#    #+#              #
-#    Updated: 2024/03/13 21:12:37 by jparnahy         ###   ########.fr        #
+#    Updated: 2024/03/13 21:28:36 by jparnahy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,10 +29,7 @@ LIBFT = libft/minilib.a
 $(NAME): $(LIBFT) $(NAME_SERVER) $(NAME_CLENT)
 	ar -rc $(NAME)
 
-$(NAME_SERVER) $(NAME_CLIENT): $(OBJS_SERVER) $(OBJS_CLIENT) $(LIBFT)
-	ar -rc $(NAME_SERVER) $(NAME_CLIENT)
-
-$(OBJS_SERVER) $(OBJS_CLIENT): $(SRC_SERVER) $(SRC_CLIENT) $(LIBFT)
+$(NAME_SERVER) $(NAME_CLIENT): $(OBJS_SERVER) $(OBJS_CLIENT) $(NAME) $(LIBFT) 
 	cc $(FLAG) $(OBJS_SERVER) $(LIBFT) -o $(NAME_SERVER)
 	cc $(FLAG) $(OBJS_CLIENT) $(LIBFT) -o $(NAME_CLIENT)
 
