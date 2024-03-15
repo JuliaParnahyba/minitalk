@@ -6,11 +6,11 @@
 /*   By: jparnahy <jparnahy@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 20:37:07 by jparnahy          #+#    #+#             */
-/*   Updated: 2024/03/13 21:03:56 by jparnahy         ###   ########.fr       */
+/*   Updated: 2024/03/14 20:36:15 by jparnahy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minilib.h"
+#include "minilib.h"
 
 int     printf_putchr(char chr)
 {

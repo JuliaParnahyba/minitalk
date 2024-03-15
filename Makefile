@@ -6,42 +6,36 @@
 #    By: jparnahy <jparnahy@student.42.rio>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/12 19:55:32 by jparnahy          #+#    #+#              #
-#    Updated: 2024/03/13 21:28:36 by jparnahy         ###   ########.fr        #
+#    Updated: 2024/03/14 21:16:59 by jparnahy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = minitalk.a
+SRCS=server.c client.c
+OBJS = $(SRCS:.c=.o)
 
-NAME_SERVER = server
-NAME_CLIENT = client
+FLAGS=-Wall -Werror -Wextra
+RM=rm -f
 
-SRC_SERVER = server.c
-SRC_CLIENT = client.c
+LIBFT=libft/minilib.a
 
-OBJS_SERVER = $(SRC_SERVER:.c=.o)
-OBJS_CLIENT = $(SRC_CLIENT:.c=.o)
+.c.o:
+	cc -Wall -Wextra -Werror -c $< -o $(<:.c=.o)
 
-FLAGS = -Wall -Werror -Wextra -c
-RM = rm -f
-
-LIBFT = libft/minilib.a
-
-$(NAME): $(LIBFT) $(NAME_SERVER) $(NAME_CLENT)
-	ar -rc $(NAME)
-
-$(NAME_SERVER) $(NAME_CLIENT): $(OBJS_SERVER) $(OBJS_CLIENT) $(NAME) $(LIBFT) 
-	cc $(FLAG) $(OBJS_SERVER) $(LIBFT) -o $(NAME_SERVER)
-	cc $(FLAG) $(OBJS_CLIENT) $(LIBFT) -o $(NAME_CLIENT)
-
-$(LIBFT):
+mandatory: $(OBJS)
 	make -C libft
+	cc $(FLAGS) server.o $(LIBFT) -o server
+	cc $(FLAGS) client.o $(LIBFT) -o client
+
+all: mandatory 
 
 clean:
 	make -C libft clean
-	$(RM) $(OBJS_SERVER) $(OBJS_CLIENT)
+	$(RM) $(OBJS)
 
-fclean:
-	clean
-	$(RM) $(NAME)
+fclean:	clean
+	make -C libft fclean
+	$(RM) server client
 
 re: fclean all
+
+.PHONY: all clean fclean re

@@ -6,11 +6,11 @@
 /*   By: jparnahy <jparnahy@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 20:39:29 by jparnahy          #+#    #+#             */
-/*   Updated: 2024/03/13 21:03:36 by jparnahy         ###   ########.fr       */
+/*   Updated: 2024/03/14 20:36:26 by jparnahy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minilib.h"
+#include "minilib.h"
 
 int     printf_ptr(unsigned long int n)
 {

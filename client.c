@@ -6,11 +6,12 @@
 /*   By: jparnahy <jparnahy@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 20:47:04 by jparnahy          #+#    #+#             */
-/*   Updated: 2024/03/13 20:52:53 by jparnahy         ###   ########.fr       */
+/*   Updated: 2024/03/14 19:18:55 by jparnahy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
+#include "libft/minilib.h"
 
 void	char_by_char(int c, int id)
 {
@@ -26,7 +27,7 @@ void	char_by_char(int c, int id)
 		else if (bit == 1)
 			kill(id, SIGUSR2);
 		usleep(600);
-		count++
+		count++;
 	}
 }
 

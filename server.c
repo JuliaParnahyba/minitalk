@@ -6,11 +6,12 @@
 /*   By: jparnahy <jparnahy@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 20:37:55 by jparnahy          #+#    #+#             */
-/*   Updated: 2024/03/13 20:46:53 by jparnahy         ###   ########.fr       */
+/*   Updated: 2024/03/14 19:17:55 by jparnahy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
+#include "libft/minilib.h"
 
 void	back_sig(int type_sig)
 {
@@ -24,7 +25,7 @@ void	back_sig(int type_sig)
 	count++;
 	if (count == 8)
 	{
-		write(1, &c, 1);
+		ft_printf("%c", c);
 		count = 0;
 		c = 0;
 	}

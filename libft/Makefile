@@ -6,14 +6,14 @@
 #    By: jparnahy <jparnahy@student.42.rio>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/12 20:45:17 by jparnahy          #+#    #+#              #
-#    Updated: 2024/03/13 21:27:07 by jparnahy         ###   ########.fr        #
+#    Updated: 2024/03/14 20:35:56 by jparnahy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = minilib.a
 
 SRCS_PP = ft_printf.c ft_atoi.c
-SRCS_SR = sources/nbrs.c sources/words.c
+SRCS_SR = nbrs.c words.c
 
 OBJS_PP = $(SRCS_PP:.c=.o)
 OBJS_SR = $(SRCS_SR:.c=.o)
@@ -30,7 +30,7 @@ $(OBJS_PP): $(SRCS_PP)
 	cc $(FLAGS) $(SRCS_PP)
 
 $(OBJS_SR): $(SRCS_SR)
-	cc $(FLAGS) $< -o $@
+	cc $(FLAGS) $(SRCS_SR) 
 
 clean:
 	$(RM) $(OBJS_PP) $(OBJS_SR)
