@@ -6,7 +6,7 @@
 /*   By: jparnahy <jparnahy@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 20:53:01 by jparnahy          #+#    #+#             */
-/*   Updated: 2024/03/16 17:48:08 by jparnahy         ###   ########.fr       */
+/*   Updated: 2024/03/16 19:14:26 by jparnahy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 /*  -*-*-*-*-*-*-* C LIBRARIE USED *-*-*-*-*-*-  */
 
-#include <signal.h>
-#include "libft/minilib.h"
+# include <signal.h>
+# include "libft/minilib.h"
 
 /*  -*-*-*-*-*-*-* MANDATORY FUNCTIONS PROTOTYPES  *-*-*-*-*-*-  */
 
@@ -25,6 +25,6 @@ void	char_by_char(int c, int id);
 
 /*  -*-*-*-*-*-*-* MANDATORY FUNCTIONS PROTOTYPES  *-*-*-*-*-*-  */
 
-void    back_sig_bonus(int type_sig, siginfo_t *info, void *context);
+void	back_sig_bonus(int type_sig, siginfo_t *info, void *context);
 
 #endif

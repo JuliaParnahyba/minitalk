@@ -6,7 +6,7 @@
 /*   By: jparnahy <jparnahy@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 20:47:04 by jparnahy          #+#    #+#             */
-/*   Updated: 2024/03/14 19:18:55 by jparnahy         ###   ########.fr       */
+/*   Updated: 2024/03/16 18:58:05 by jparnahy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,16 +33,15 @@ void	char_by_char(int c, int id)
 
 int	main(int c, char **v)
 {
+	char	*str;
+	int		i;
+	int		server_id;
+
 	if (c == 3)
 	{
-		char	*str;
-		int		i;
-		int		server_id;
-
 		str = v[2];
 		i = 0;
 		server_id = ft_atoi(v[1]);
-
 		while (str[i])
 		{
 			char_by_char(str[i], server_id);
