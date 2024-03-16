@@ -6,12 +6,15 @@
 #    By: jparnahy <jparnahy@student.42.rio>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/12 19:55:32 by jparnahy          #+#    #+#              #
-#    Updated: 2024/03/14 21:16:59 by jparnahy         ###   ########.fr        #
+#    Updated: 2024/03/16 17:19:01 by jparnahy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS=server.c client.c
+SRCS = server.c client.c
 OBJS = $(SRCS:.c=.o)
+
+SRCS_BONUS = server_bonus.c client_bonus.c
+OBJS_BONUS = $(SRCS_BONUS:.c=.o)
 
 FLAGS=-Wall -Werror -Wextra
 RM=rm -f
@@ -26,11 +29,17 @@ mandatory: $(OBJS)
 	cc $(FLAGS) server.o $(LIBFT) -o server
 	cc $(FLAGS) client.o $(LIBFT) -o client
 
-all: mandatory 
+bonus: $(OBJS_BONUS)
+	make -C libft
+	cc $(FLAGS) server_bonus.o $(LIBFT) -o server_bonus
+	cc $(FLAGS) client_bonus.o $(LIBFT) -o client_bonus
+
+all: mandatory bonus
 
 clean:
 	make -C libft clean
-	$(RM) $(OBJS)
+	$(RM) $(OBJS) $(OBJS_BONUS)
+
 
 fclean:	clean
 	make -C libft fclean
