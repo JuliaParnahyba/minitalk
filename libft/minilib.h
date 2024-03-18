@@ -6,7 +6,7 @@
 /*   By: jparnahy <jparnahy@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 20:11:23 by jparnahy          #+#    #+#             */
-/*   Updated: 2024/03/13 20:55:17 by jparnahy         ###   ########.fr       */
+/*   Updated: 2024/03/18 18:45:50 by jparnahy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 
 /*  -*-*-*-*-*-*-* C LIBRARIES USED *-*-*-*-*-*-  */
 
-#include <unistd.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdarg.h>
+# include <unistd.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <stdarg.h>
 
 /*  -*-*-*-*-*-*-* FUNCTIONS PROTOTYPES  *-*-*-*-*-*-  */
 

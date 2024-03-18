@@ -6,45 +6,49 @@
 #    By: jparnahy <jparnahy@student.42.rio>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/12 19:55:32 by jparnahy          #+#    #+#              #
-#    Updated: 2024/03/16 18:55:46 by jparnahy         ###   ########.fr        #
+#    Updated: 2024/03/18 18:24:53 by jparnahy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+NAME = minitalk.a
+
 SRCS = server.c client.c
+BONUS_SRCS = server_bonus.c client_bonus.c
+
 OBJS = $(SRCS:.c=.o)
-
-SRCS_BONUS = server_bonus.c client_bonus.c
-OBJS_BONUS = $(SRCS_BONUS:.c=.o)
-
-FLAGS = -Wall -Werror -Wextra
-RM = rm -f
-
-LIBFT = libft/minilib.a
+BONUS_OBJS = $(BONUS_SRCS:.c=.o)
 
 .c.o:
 	cc -Wall -Wextra -Werror -c $< -o $(<:.c=.o)
 
-all: mandatory bonus
+all: $(NAME)
 
-mandatory: $(OBJS)
+libft/minilib.a:
 	make -C libft
-	cc $(FLAGS) server.o $(LIBFT) -o server
-	cc $(FLAGS) client.o $(LIBFT) -o client
 
-bonus: $(OBJS_BONUS)
-	make -C libft
-	cc $(FLAGS) server_bonus.o $(LIBFT) -o server_bonus
-	cc $(FLAGS) client_bonus.o $(LIBFT) -o client_bonus
+server: server.o
+	cc -Wall -Wextra -Werror -o server server.o libft/minilib.a
+
+client: client.o
+	cc -Wall -Wextra -Werror -o client client.o libft/minilib.a
+
+server_bonus: server_bonus.o
+	cc -Wall -Wextra -Werror -o server_bonus server_bonus.o libft/minilib.a
+
+client_bonus: client_bonus.o
+	cc -Wall -Wextra -Werror -o client_bonus client_bonus.o libft/minilib.a
+
+$(NAME): $(OBJS) libft/minilib.a server client
+
+bonus: $(BONUS_OBJS) libft/minilib.a server_bonus client_bonus
 
 clean:
 	make -C libft clean
-	$(RM) $(OBJS) 
-	$(RM) $(OBJS_BONUS)
+	rm -rf $(OBJS)
 
-fclean:	clean
+fclean: clean
 	make -C libft fclean
-	$(RM) server client
-	$(RM) server_bonus client_bonus
+	rm -rf $(NAME) $(OBJS) $(BONUS_OBJS) server client server_bonus client_bonus
 
 re: fclean all
 

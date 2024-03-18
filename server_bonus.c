@@ -6,7 +6,7 @@
 /*   By: jparnahy <jparnahy@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 20:37:55 by jparnahy          #+#    #+#             */
-/*   Updated: 2024/03/16 19:12:36 by jparnahy         ###   ########.fr       */
+/*   Updated: 2024/03/18 18:32:21 by jparnahy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	back_sig_bonus(int type_sig, siginfo_t *info, void *context)
 	static int	count = 0;
 	static char	c = 0;
 
+	(void)context;
 	if (type_sig == SIGUSR1)
 		c |= (0 << count);
 	else if (type_sig == SIGUSR2)
