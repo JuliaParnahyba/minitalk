@@ -6,7 +6,7 @@
 /*   By: jparnahy <jparnahy@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 20:47:04 by jparnahy          #+#    #+#             */
-/*   Updated: 2024/03/16 18:59:21 by jparnahy         ###   ########.fr       */
+/*   Updated: 2024/03/29 17:51:16 by jparnahy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,14 @@ void	char_by_char(int c, int id)
 	}
 }
 
-void	back_msg(int n)
+void	back_msg(int signal)
 {
-	(void) n;
-	ft_printf("\n-----------------------------------");
-	ft_printf("\n-- message received successfully --");
-	ft_printf("\n-----------------------------------\n");
+	if (signal == SIGUSR1)
+	{
+		ft_printf("\n-----------------------------------");
+		ft_printf("\n-- message received successfully --");
+		ft_printf("\n-----------------------------------\n\n");
+	}
 }
 
 int	main(int c, char **v)
@@ -59,7 +61,9 @@ int	main(int c, char **v)
 		char_by_char(str[i], server_id);
 	}
 	else
-		printf("./client [PID] [MSG]");
-	ft_printf("\n");
+	{
+		printf("ERROR :: Use the correct pattern ::\n\n");
+		printf("< ./client_bonus [SERVER_PID] [MESSAGE] >\n");
+	}
 	return (0);
 }

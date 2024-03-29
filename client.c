@@ -6,7 +6,7 @@
 /*   By: jparnahy <jparnahy@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 20:47:04 by jparnahy          #+#    #+#             */
-/*   Updated: 2024/03/16 18:58:05 by jparnahy         ###   ########.fr       */
+/*   Updated: 2024/03/29 17:41:36 by jparnahy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,12 @@ int	main(int c, char **v)
 			char_by_char(str[i], server_id);
 			i++;
 		}
+		char_by_char(str[i], server_id);
 	}
 	else
-		printf("./client [PID] [MSG]");
+	{
+		printf("ERROR :: Use the correct pattern ::\n\n");
+                printf("< ./client [SERVER_PID] [MESSAGE] >\n");
+	}
 	return (0);
 }
